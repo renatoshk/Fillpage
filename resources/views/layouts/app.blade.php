@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a style="color: white; font-size: 30px;" class="navbar-brand" href="{{ url('/') }}">
+                <a style="color: red; font-size: 30px;" class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Fillpage.com') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -41,11 +41,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a style="color: white; font-size: 25px;" class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a style="color: red; font-size: 25px;" class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a style="color: white; font-size: 25px;" class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a style="color: red; font-size: 25px;" class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
