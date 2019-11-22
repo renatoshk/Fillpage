@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 @section('content')
+
+@if(Session::has('user_deleted'))
+    <p class="btn btn-danger" style="color: white">{{session('user_deleted')}}</p>
+@endif
 <h1>Users</h1>
  <table class="table" border="1" style="color: blue;">
     <thead>
