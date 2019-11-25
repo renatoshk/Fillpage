@@ -20,8 +20,8 @@ class CreatePostsTable extends Migration
             $table->integer('photo_id')->unsigned()->index()->nullable();
             $table->string('title');
             $table->text('body');
-            
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

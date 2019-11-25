@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('content')
+
 <h1>Posts</h1>
  <table class="table" border="1" style="color: blue;">
     <thead>
@@ -22,7 +23,7 @@
         <td><img height="100" src="{{$post->photo ? $post->photo->file : 'No photo available'}}" alt=""></td>
         <td>{{$post->user->name}}</a></td>
         <td>{{$post->category ? $post->category->name : 'Uncategorized'}}</td>
-        <td>{{$post->title}}</td>
+        <td><a href="{{route('posts.edit', $post->id)}}">{{$post->title}}</a></td>
         <td>{{$post->body}}</td>
         <td>{{$post->created_at->diffForHumans()}}</td>
         <td>{{$post->updated_at->diffForHumans()}}</td>

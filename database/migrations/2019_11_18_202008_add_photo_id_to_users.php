@@ -28,7 +28,7 @@ class AddPhotoIdToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->dropDown('photo_id');
+            $table->dropIfExists('photo_id');
         });
     }
 }
