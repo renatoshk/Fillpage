@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -119,5 +118,12 @@ class AdminPostsController extends Controller
         return redirect('/admin/posts');
 
         //
+    }
+
+    public function post($id){
+        $post = Post::findOrFail($id);
+        $comments = $post->comments()->whereisActive(1)->get();
+        return view('post', compact('post', 'comments'));
+
     }
 }
