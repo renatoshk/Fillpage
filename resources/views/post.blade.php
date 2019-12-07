@@ -1,34 +1,37 @@
 @extends('layouts.blog-post')
 
 @section('content')
+<div class="row">
+    <div class="col-md-8">
+      <br>
 <h1 style="color: red;">{{$post->title}}</h1>
 
                 <!-- Author -->
-                <p style="color: yellow" class="lead">
-                    by <a href="#">{{$post->user->name}}</a>
+                <p style="color: yellow; font-size: 18px" class="lead">
+                    by {{$post->user->name}}
                 </p>
 
-                <hr>
+                <br>
 
                 <!-- Date/Time -->
                 <p style="color: red"><span class="glyphicon glyphicon-time"></span>Posted {{$post->created_at->diffForHumans()}}</p>
 
-                <hr>
+                <br>
 
                 <!-- Preview Image -->
-                <img class="img-responsive" src="{{$post->photo->file}}" alt="">
+                <img class="img-responsive" src="{{$post->photo ? $post->photo->file : null}}" alt="">
 
-                <hr>
-
+                <br>
                 <!-- Post Content -->
-                <p style="color: red" class="lead">{{$post->body}}</p>
+                <span style="color:red">{!! $post->body !!}</span>
 
-                <hr>
+                 <br>
                
                 <!-- Blog Comments -->
-                @if(Auth::check())
-
-                <!-- Comments Form -->
+               
+                <br>
+                @if(Auth::user())
+   <!-- Comments Form -->
 
                 <div style="background-color: yellow" class="well">
                    
@@ -80,7 +83,7 @@
                                 {!!Form::close()!!}
                               </div>
                             </div>
-                                            @if(count($comment->replies) > 0)
+                            @if(count($comment->replies) > 0)
                             @foreach($comment->replies as $reply)
                          
 
@@ -90,14 +93,14 @@
                             </a>
                             <div class="media-body">
                                 <h4 class="media-heading">{{$reply->author}}
-                                    <small>{{$reply->created_at->diffForHumans()}}</small>
-                                
+                                <small style="color:red">{{$reply->created_at->diffForHumans()}}</small>
                                 </h4>
+                                
                                 <p style="color:white">{{$reply->text}}</p>
                             </div>
 
                             <br>
-                <div class="comment-reply-container">      
+                         <div class="comment-reply-container">      
                             <button class="toggle-reply btn btn-danger pull-right">Reply</button>
                               <div style="display: none;" class="comment-reply">       
                                 {!!Form::open(['method'=>'POST', 'action'=>'CommentRepliesController@createReply']) !!}
@@ -120,7 +123,23 @@
                 </div>
         @endforeach
     @endif
+         </div>
+         @section('categories')
+         <ul class="list-unstyled">
+            @if($categories)
+              @foreach($categories as $category)
+             <li>
+                <a href="#">{{$category->name}}</a>
+            </li>
+            @endforeach
+            @endif
+        </ul>
 
+         @stop
+
+
+
+     </div>
                 <!-- Comment -->
 @stop
 @section('scripts')
@@ -129,8 +148,5 @@
         $(this).next().slideToggle("slow");
 
      });
-
-
 </script>
-
 @stop

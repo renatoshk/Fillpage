@@ -1,10 +1,11 @@
 @extends('layouts.admin')
 @section('content')
+@include('includes.tinyeditor')
 <h1>Edit Post</h1>
 @include('includes.form_error')
 <div class="row">
   <div class="col-sm-3">
-       <img src="{{$post->photo->file}}" alt="" class="img-responsive">
+       <img src="{{$post->photo ? $post->photo->file : null}}" alt="" class="img-responsive">
   </div>
 <div class="col-sm-6">
 {!!Form::model($post,['method'=>'PATCH', 'action'=>['AdminPostsController@update', $post->id],'files'=>true]) !!}

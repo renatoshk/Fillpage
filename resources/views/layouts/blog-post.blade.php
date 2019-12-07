@@ -25,10 +25,10 @@
 
 </head>
 
-<body style="background-color:black; ">
+<body>
 
     <!-- Navigation -->
-    <nav style="background-color: black;" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -38,19 +38,37 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a  style="color: red; font-size: 35px" class="navbar-brand" href="#">Fillpage.com</a>
+                <a class="navbar-brand" href="/home">Fillpage.com</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav navbar-right">
+                    @if(Auth::guest())
+                          <li><a href="{{url('/login')}}">Login</a></li>
+                          <li><a href="{{url('/register')}}">Register</a></li>
+                          @else
+                          <li><a href="/home">Home</a></li>
+                          <li><a href="{{route('logout')}}" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                        {{ __('Logout')}}</a></li>
+                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                             </form>
+
+                    @endif
+                    @if(Auth::user()->role_id == 1)
+                        <li>
+                            <a href="/admin">Admin</a>
+                        </li>
+                    @endif
                     <li>
-                        <a style="color: red; font-size:20px" href="#">About</a>
+                        <a href="#">About</a>
                     </li>
                     <li>
-                        <a  style="color: red; font-size:20px" href="#">Services</a>
+                        <a href="#">Services</a>
                     </li>
                     <li>
-                        <a  style="color: red; font-size:20px" href="#">Contact</a>
+                        <a href="#">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -69,13 +87,15 @@
                 @yield('content')
               
             </div>
+            <br>
+            <br>
 
             <!-- Blog Sidebar Widgets Column -->
             <div class="col-md-4">
 
                 <!-- Blog Search Well -->
-                <div style="background-color:black" class="well">
-                    <h4 style="color: red">Blog Search</h4>
+                <div class="well">
+                    <h4>Blog Search</h4>
                     <div class="input-group">
                         <input type="text" class="form-control">
                         <span class="input-group-btn">
@@ -88,39 +108,19 @@
                 </div>
 
                 <!-- Blog Categories Well -->
-                <div style="background-color: yellow" class="well">
+                <div  class="well">
                     <h4>Blog Categories</h4>
-                    <div class="row">
+                   <!--  <div class="row">
                         <div class="col-lg-6">
-                            <ul class="list-unstyled">
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                            </ul>
+                            
                         </div>
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled">
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    </div> -->
+                    @yield('categories')
                     <!-- /.row -->
                 </div>
 
                 <!-- Side Widget Well -->
-                <div style="background-color: black; color:red" class="well">
+                <div class="well">
                     <h4>Side Widget Well</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
                 </div>
@@ -136,7 +136,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <p style="color:red">Copyright &copy; Fillpage.com {{\Carbon\Carbon::now()->year}}</p>
                 </div>
             </div>
             <!-- /.row -->

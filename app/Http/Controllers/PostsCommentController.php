@@ -22,7 +22,7 @@ class PostsCommentController extends Controller
     public function index()
     {
         //
-        $comments = Comment::all();
+        $comments = Comment::paginate(3);
         return view('admin.comments.index', compact('comments'));
     }
 
@@ -50,11 +50,10 @@ class PostsCommentController extends Controller
             'post_id' =>$request->post_id,
             'author'  =>$user->name,
             'email'   =>$user->email,
-            'photo'   =>$user->photo->file,
+            'photo'   =>$user->photo ? $user->photo->file : NULL,
             'text'    =>$request->text
          ];
         Comment::create($data);
-        $request->session()->flash('comment_message', 'Your comment has been submitted');
         return redirect()->back();
        
 

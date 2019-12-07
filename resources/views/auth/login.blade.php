@@ -3,7 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+
         <div class="col-md-8">
+
             <div class="card"  style="padding-bottom:50px">
                 <div class="card-header" style="font-size: 50px; text-align: center">{{ __('Login') }}</div>
 
