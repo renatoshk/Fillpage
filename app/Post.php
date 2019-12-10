@@ -5,9 +5,10 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Post extends Model
 {
-     use Sluggable;
+    use Sluggable;
     use SluggableScopeHelpers;
       protected $fillable =['title', 'body', 'category_id', 'photo_id'];
       public function sluggable()

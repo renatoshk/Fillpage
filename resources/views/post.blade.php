@@ -4,10 +4,10 @@
 <div class="row">
     <div class="col-md-8">
       <br>
-<h1 style="color: red;">{{$post->title}}</h1>
+<h1 style="color: white;">{{$post->title}}</h1>
 
                 <!-- Author -->
-                <p style="color: yellow; font-size: 18px" class="lead">
+                <p style="color: white; font-size: 18px" class="lead">
                     by {{$post->user->name}}
                 </p>
 
@@ -23,7 +23,7 @@
 
                 <br>
                 <!-- Post Content -->
-                <span style="color:red">{!! $post->body !!}</span>
+                <span style="color:white">{!! $post->body !!}</span>
 
                  <br>
                
@@ -33,7 +33,7 @@
                 @if(Auth::user())
    <!-- Comments Form -->
 
-                <div style="background-color: yellow" class="well">
+                <div style="background-color: black" class="well">
                    
                {!!Form::open(['method'=>'POST', 'action'=>'PostsCommentController@store']) !!}
                <input type="hidden" name="post_id" value="{{$post->id}}">
@@ -129,7 +129,7 @@
             @if($categories)
               @foreach($categories as $category)
              <li>
-                <a href="#">{{$category->name}}</a>
+                <a href="{{route('home.category', $category->id)}}">{{$category->name}}</a>
             </li>
             @endforeach
             @endif

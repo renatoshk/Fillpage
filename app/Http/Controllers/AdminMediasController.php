@@ -8,7 +8,7 @@ class AdminMediasController extends Controller
 {
     //
     public function index(){
-    	$photos = Photo::all();
+    	$photos = Photo::orderBy('created_at', 'DESC')->paginate(2);
     	return view('admin.media.index', compact('photos'));
 
     }

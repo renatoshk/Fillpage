@@ -31,5 +31,13 @@
         @endforeach
     </tbody>
   </table>
+   <div class="row"> 
+                <div class="col sm-6 col-sm-offset-5">
+                <ul  class="pager btn btn-danger">
+                    {{$photos->links()}}
+                    
+                </ul>
+            </div>
+            </div> 
   @endif
 @stop

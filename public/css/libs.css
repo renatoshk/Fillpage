@@ -1114,12 +1114,12 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: red;
+  color: white;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: #23527c;
+  color: red;
   text-decoration: underline;
 }
 a:focus {
@@ -2521,6 +2521,7 @@ label {
   max-width: 100%;
   margin-bottom: 5px;
   font-weight: bold;
+  color:white;
 }
 input[type="search"] {
   -webkit-box-sizing: border-box;
@@ -4513,7 +4514,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   border-color: #080808;
 }
 .navbar-inverse .navbar-brand {
-  color: #9d9d9d;
+  color: white;
 }
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
@@ -4524,7 +4525,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #9d9d9d;
 }
 .navbar-inverse .navbar-nav > li > a {
-  color: #9d9d9d;
+  color: white;
 }
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
@@ -8441,7 +8442,7 @@ body {
 }
 
 .sidebar ul li a.active {
-    background-color: #eee;
+    background-color: black;
 }
 
 .sidebar .arrow {
